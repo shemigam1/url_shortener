@@ -16,10 +16,10 @@ urlRouter.get(
   authMiddleWare,
   getShortUrlCountController
 );
-urlRouter.get("/", authMiddleWare, getAllShortUrlsController);
+urlRouter.get("/", getAllShortUrlsController);
 urlRouter.post("/", createShortUrlController);
-// urlRouter.put("/:shortUrl", authMiddleWare, updateShortUrlController);
-urlRouter.delete("/:shortUrl", authMiddleWare, updateShortUrlController);
-// urlRouter.get("/:shortUrl", authMiddleWare, updateShortUrlController);
+// urlRouter.put("/:shortUrl", updateShortUrlController);
+urlRouter.delete("/:shortUrl", updateShortUrlController);
+// urlRouter.get("/:shortUrl", updateShortUrlController);
 
 export default urlRouter;

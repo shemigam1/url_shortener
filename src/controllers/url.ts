@@ -7,10 +7,12 @@ export const createShortUrlController = async (
   res: Response,
   next: NextFunction
 ) => {
+  console.log("here");
   const input: ICreateUrl = {
     originalUrl: req.body.originalUrl,
-    createdBy: res.locals.user._id,
+    createdBy: req.body.createdBy,
   };
+
   const response = await urlFactory().createShortUrl(input);
   return res.status(response.code).json(response);
 };

@@ -1,13 +1,24 @@
 import { generateShortHash } from "../../helpers/hash";
 import { ResultFunction } from "../../helpers/utils";
 import { shortUrlModel } from "../../models/url";
+import User from "../../models/user";
 import { ICreateUrl, IGetUrl, IUpdateUrl } from "../../types/url";
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 class Url {
   public async createShortUrl({ originalUrl, createdBy }: ICreateUrl) {
     try {
-      const shortHash = generateShortHash();
+      const user = await User.find({ email: createdBy });
+      if (!user) {
+        return ResultFunction(
+          false,
+          "user doesnt exist",
+          401,
+          "UNAUTHORIZED",
+          null
+        );
+      }
+      const shortHash: any = generateShortHash();
       const shortUrl = await shortUrlModel.create({
         originalUrl,
         shortUrl: shortHash,
