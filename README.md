@@ -1,6 +1,6 @@
 # URL Shortener
 
-A fast and efficient URL shortening service that converts long URLs into short, manageable links. This service provides both web interface and API endpoints for creating, managing, and analyzing shortened URLs.
+A fast and efficient URL shortening service that converts long URLs into short, manageable links. This service provides API endpoints for creating, managing, and analyzing shortened URLs.
 
 ## Features
 
